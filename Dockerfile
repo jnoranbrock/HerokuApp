@@ -30,7 +30,7 @@ WORKDIR /app
 
 FROM base AS prod_dependencies
 COPY package*.json ./
-RUN npm install --production --silent
+RUN npm install serve --production --silent --s
 
 # ------------------------------------------------------------------------------
 # Install remaining dev dependencies.
