@@ -131,8 +131,8 @@ function validPass(){
 
 function validSubmit(bool){
 	btn = document.getElementById("registerbtn");
-	if (bool == true) {	btn.disabled = false; }
-	else { btn.disabled = true;  }
+	if (bool == true) {	btn.disabled = "False"; }
+	else { btn.disabled = "True";  }
 }
 
 
