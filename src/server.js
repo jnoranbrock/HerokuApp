@@ -72,11 +72,11 @@ app.get('/register', function(req, res) {
 
 app.post('/register', function(req, res) {
   var name = String(req.body.fullName.value);
-  print(name);
+  window.alert("Name"+name);
   var email = String(req.body.emailAddress.value);
-  print(email);
+  window.alert("Email"+email);
   var pass = String(req.body.passwordFirst.value);
-  print(pass);
+  window.alert("Pass"+pass);
   var insert = 'INSERT INTO user_info_db(full_name, email_address, password) VALUES('+ name+", "+email+","+ pass+');';
 
   db.task('post-register-data', task => {
