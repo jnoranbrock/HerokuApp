@@ -16,6 +16,6 @@
 
 #mmenu {
 	position: fixed;
-	width: auto;
-	height: auto;
+	width: 100%;
+	top: 0;
 }
