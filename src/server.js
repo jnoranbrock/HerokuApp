@@ -84,7 +84,7 @@ app.post('/register', function(req, res) {
     }
   })
 })
-);
+});
 
 // Login page
 app.get('/login', function(req, res) {
