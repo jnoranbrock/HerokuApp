@@ -86,7 +86,7 @@ app.post('/register', function(req, res) {
 })
 });
 
-// Login page
+// Login page\\
 app.get('/login', function(req, res) {
 	res.render('pages/login',{
 		my_title:"Login Page"
