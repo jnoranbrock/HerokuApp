@@ -125,14 +125,13 @@ function validPass(){
 	var c_pw = document.getElementById("passwordConfirm");
 	var v_pw =  document.getElementById("Valid_pw");
 	if(validExpr(/^(?=.+\d)(?=.*[A-Z]+)(?=.*[:-@!-/[-`{-~]+).{8,}$/g, pw.value) && pw.value === c_pw.value)
-	{	validSubmit(true);	v_pw.src="../resources/img/cmark.png"; v_pw.style.visibility = "visible";	v_pw.style.height = "30px"; }
-	else { validSubmit(false); v_pw.src="../resources/img/cross.png"; v_pw.style.visibility = "visible"; v_pw.style.height = "30px";}
+	{	validSubmit(true);	v_pw.src="../resources/img/cmark.png"; v_pw.style.visibility = "visible";	v_pw.style.height = "30px"; return; }
+	else { validSubmit(false); v_pw.src="../resources/img/cross.png"; v_pw.style.visibility = "visible"; v_pw.style.height = "30px"; return; }
 }
 
 function validSubmit(bool){
-	btn = document.getElementById("registerbtn");
-	if (bool == true) {	btn.disabled = "False"; }
-	else { btn.disabled = "True";  }
+	if (bool == true) {	document.getElementById("registerbtn").disabled = "False"; }
+	else { document.getElementById("registerbtn").disabled = "True";  }
 }
 
 
