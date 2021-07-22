@@ -83,7 +83,7 @@ app.get('/name', function(req, res) {
 		my_title:"Name Page"
 	});
 });
-/*
+
 app.post('/name/add_name',function(req,res){
 
 	var name = req.body.name;
@@ -116,7 +116,7 @@ app.post('/name/add_name',function(req,res){
 	});
 
 });
-*/
+
 // menu page
 app.get('/Main_Menu', function(req, res) {
 	res.render('pages/Main_Menu',{
