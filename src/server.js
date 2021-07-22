@@ -71,14 +71,14 @@ app.get('/register', function(req, res) {
 });
 
 app.post('/register', function(req, res) {
-  var f,name = String(req.body.fullName.value).split("=");
-  var e,email = String(req.body.emailAddress.value).split("=");
-  var p,pass = String(req.body.passwordFirst.value).split("=");
+  var f, name = String(req.body.fullName.value).split("=");
+  var e, email = String(req.body.emailAddress.value).split("=");
+  var p, pass = String(req.body.passwordFirst.value).split("=");
   var insert = 'INSERT INTO user_info_db VALUES('+ name+", "+email+","+ pass+')';
 
   db.task('post-register-data', task => {
       return task.batch([
-          task.any('SELECT * FROM user_info_db WHERE full_name ==' +name),
+          task.any('SELECT * FROM user_info_db WHERE full_name =='+name),
           task.any(insert)
       ]);
   })
