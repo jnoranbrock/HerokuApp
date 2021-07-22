@@ -81,9 +81,8 @@ app.post('/register', function(req, res) {
   .then(data => {
     res.render('pages/home', {
       my_title:"Home Page"
-    }
+    });
   })
-})
 });
 
 // Login page\\
