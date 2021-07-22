@@ -71,25 +71,7 @@ app.get('/register', function(req, res) {
 });
 
 app.post('/register', function(req, res) {
-  var name = String(req.body.fullName.value);
-  window.alert("Name"+name);
-  var email = String(req.body.emailAddress.value);
-  window.alert("Email"+email);
-  var pass = String(req.body.passwordFirst.value);
-  window.alert("Pass"+pass);
-  var insert = 'INSERT INTO user_info_db(full_name, email_address, password) VALUES('+ name+", "+email+","+ pass+');';
-
-  db.task('post-register-data', task => {
-      return task.batch([
-          task.any('SELECT * FROM user_info_db WHERE (full_name =='+name+');'),
-          task.any(insert)
-      ]);
-  })
-  .then(data => {
-    res.render('pages/Main_Menu', {
-      my_title:"Main Menu"
-    });
-  })
+  uploadDataToDB();
 });
 
 // Login page\\
