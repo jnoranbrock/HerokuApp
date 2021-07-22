@@ -75,10 +75,10 @@ app.post('/register', function(req, res) {
   var e,email = String(req.body.emailAddress.value).split("=");
   var p,pass = String(req.body.passwordFirst.value).split("=");
   var insert = 'INSERT INTO user_info_db VALUES('+ name+", "+email+","+ pass+')';
-  console.log(name, email, pass, req.body);
+
   db.task('post-register-data', task => {
       return task.batch([
-          task.any('SELECT * FROM user_info_db WHERE full_name ==' name),
+          task.any('SELECT * FROM user_info_db WHERE full_name ==' +name),
           task.any(insert)
       ]);
   })
