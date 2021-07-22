@@ -74,15 +74,13 @@ app.post('/register', function(req, res) {
   var name = req.body.fullName;
   var email = req.body.emailAddress;
   var pass = req.body.passwordFirst;
-  var insert = 'INSERT INTO user_info_db(full_name, email_address, password) VALUES('+ name+", "+email+","+ pass') ON CONFLICT DO NOTHING';
+  var insert = 'INSERT INTO user_info_db VALUES('+ name+", "+email+","+ pass') ON CONFLICT DO NOTHING';
   db.task('post-register-data', task => {
-    return task.batch([
-      task.any(insert)
-    ]);
+    return task.any(insert);
   })
   .then(data => {
-    res.render('pages/login', {
-      my_title:"Login Page"
+    res.render('pages/home', {
+      my_title:"Home Page"
     }
   })
 })
