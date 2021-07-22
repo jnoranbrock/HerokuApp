@@ -34,9 +34,23 @@ function insertName(){
 }
 
 function checkSignInStatus(){
-	var signin_btn = document.getElementById("sign-in-btn");
-	var reg_btn = document.getElementById("register-btn");
-	console.log(document.getElementById("inputPassword").value);
+	var pw = document.getElementById("inputPassword").value;
+	var em = document.getElementById("inputEmail").value;
+
+	var query = `SELECT email_address, password FROM user_info_db WHERE email_address=${em} AND password=${pw};`
+	var db_e = new Array(); var db_p = new Array();
+	db.any(query).then(info => {
+		db_e = info[0], db_p = info[1]
+	}).catch(err => {
+		console.log(`Error: ${err}`);
+	});
+
+	if (db_e.length < 1) {
+		
+	} else {
+
+	}
+
 }
 
 function uploadDataToDB(){
@@ -53,7 +67,7 @@ function uploadDataToDB(){
     query += `VALUES('Addition', ${num1}, '+', ${num2}, ${ans}, ${correct}, ${attempted});`;
 	var query = `INSERT INTO user_info_db(full_name, email_address, password)`;
 	query += `VALUES(${full_name}, ${user_email}, ${user_pass}) ON CONFLICT DO NOTHING`;  // add the user's info to the database.
-	window.location.href = "../../views/login.html"; // This supposedly makes page change but can't get to work
+//	window.location.href = "../../views/login.html"; // This supposedly makes page change but can't get to work
 }
 
 function validateSignIn(){
