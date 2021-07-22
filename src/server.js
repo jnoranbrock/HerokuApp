@@ -70,6 +70,10 @@ app.get('/register', function(req, res) {
 	});
 });
 
+app.post('/register', function(req, res) {
+  var usr = req.body.
+});
+
 // Login page
 app.get('/login', function(req, res) {
 	res.render('pages/login',{
