@@ -130,8 +130,8 @@ function validPass(){
 }
 
 function validSubmit(bool){
-	if (bool == true) {	document.getElementById("registerbtn").disabled = "False"; }
-	else { document.getElementById("registerbtn").disabled = "True";  }
+	if (bool == true) {	document.getElementById("reg").disabled = "False"; }
+	else { document.getElementById("reg").disabled = "True";  }
 }
 
 
