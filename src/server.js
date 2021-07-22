@@ -71,13 +71,16 @@ app.get('/register', function(req, res) {
 });
 
 app.post('/register', function(req, res) {
-  var name = String(req.body.fullName.innerHTML);
-  var email = String(req.body.emailAddress.innerHTML);
-  var pass = String(req.body.passwordFirst.innerHTML);
-  var insert = 'INSERT INTO user_info_db VALUES('+ name+", "+email+","+ pass+') ON CONFLICT DO NOTHING';
+  var f,name = String(req.body.fullName.innerHTML).split("=");
+  var e,email = String(req.body.emailAddress.innerHTML).split("=");
+  var p,pass = String(req.body.passwordFirst.innerHTML).split("=");
+  var insert = 'INSERT INTO user_info_db VALUES('+ name+", "+email+","+ pass+')';
   console.log(name, email, pass, req.body);
   db.task('post-register-data', task => {
-    return task.any(insert);
+    return task.batch ([
+        if ()
+        task.any(insert);
+    ]);
   })
   .then(data => {
     res.render('pages/home', {
