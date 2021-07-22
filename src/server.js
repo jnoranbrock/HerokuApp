@@ -72,6 +72,9 @@ app.get('/register', function(req, res) {
 
 app.post('/register', function(req, res) {
   uploadDataToDB();
+  res.render('pages/login',{
+    my_title:"Login Page"
+  })
 });
 
 // Login page\\
