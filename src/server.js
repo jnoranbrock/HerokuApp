@@ -72,8 +72,11 @@ app.get('/register', function(req, res) {
 
 app.post('/register', function(req, res) {
   var name = String(req.body.fullName.value);
+  print(name);
   var email = String(req.body.emailAddress.value);
+  print(email);
   var pass = String(req.body.passwordFirst.value);
+  print(pass);
   var insert = 'INSERT INTO user_info_db VALUES('+ name+", "+email+","+ pass+');';
 
   db.task('post-register-data', task => {
