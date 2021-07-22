@@ -71,7 +71,7 @@ app.get('/register', function(req, res) {
 });
 
 app.post('/register', function(req, res) {
-  var info[] = req.elements;
+  var info = req.elements;
   var insert = "";
   db.task('post-register-data', task => {
     return task.batch([
