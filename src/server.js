@@ -71,9 +71,9 @@ app.get('/register', function(req, res) {
 });
 
 app.post('/register', function(req, res) {
-  var name = req.body.fullName;
-  var email = req.body.emailAddress;
-  var pass = req.body.passwordFirst;
+  var name = req.body.fullName.value;
+  var email = req.body.emailAddress.value;
+  var pass = req.body.passwordFirst.value;
   var insert = 'INSERT INTO user_info_db VALUES('+ name+", "+email+","+ pass+') ON CONFLICT DO NOTHING';
   db.task('post-register-data', task => {
     return task.any(insert);
