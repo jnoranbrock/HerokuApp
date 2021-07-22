@@ -71,8 +71,20 @@ app.get('/register', function(req, res) {
 });
 
 app.post('/register', function(req, res) {
-  var usr = req.body.
-});
+  var info[] = req.elements;
+  var insert = "";
+  db.task('post-register-data', task => {
+    return task.batch([
+      task.any(insert)
+    ]);
+  })
+  .then(data => {
+    res.render('pages/login', {
+      my_title:"Login Page"
+    }
+  })
+})
+);
 
 // Login page
 app.get('/login', function(req, res) {
