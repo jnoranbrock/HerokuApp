@@ -71,26 +71,32 @@ app.get('/register', function(req, res) {
 	});
 });
 
-function uploadDataToDB(req){
+function uploadDataToDB(req) {
 	var full_name = req.body.fullName.value;
 	var user_email = req.body.emailAddress.value;
 	var user_pass = req.body.passwordFirst.value;
 
-	var query = `INSERT INTO user_info_db(
-  str, str, str
-)  VALUES(
-  ${full_name},
-  ${user_email},
-  ${user_pass})`;  // add the user's info to the database.
+	var query = `INSERT INTO user_info_db(full_name, email_address,password)VALUES(${full_name},${user_email},${user_pass})`;  // add the user's info to the database.
 	return query;
 	//	window.location.href = "../../views/login.html"; // This supposedly makes page change but can't get to work
-}
+};
 
 app.post('/register', function(req, res) {
-  db.query(uploadDataToDB(req), (err, db_res) => {
-    console.log(err, db_res);
-    db.end();
-  });
+  var querystr = function (req) {
+  	var full_name = req.body.fullName.value;
+  	var user_email = req.body.emailAddress.value;
+  	var user_pass = req.body.passwordFirst.value;
+
+  	var query = `INSERT INTO user_info_db(full_name, email_address,password)VALUES(${full_name},${user_email},${user_pass})`;  // add the user's info to the database.
+  	return query;
+  };
+  db.query(querystr, (err, db_res) => {
+    if (err !== undefined) { console.log("Postgres INS error:", err); console.log("\nkeys for Postgres error:", Object.keys(err)); }
+    if (db_res !== undefined) { console.log("Postgres response:", res); console.log("\nkeys for Postgres res:", Object.keys(res)); }
+    if (db_res.rowCount > 0) { console.log("User inserted"); }
+    else { console.log("No records inserted"); }
+    }
+  );
   res.render('pages/login',{
       my_title: "Login Page"
   });
