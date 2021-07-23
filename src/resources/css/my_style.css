@@ -19,3 +19,8 @@
 	width: 100%;
 	top: 0;
 }
+#menumsg {
+	color: white;
+	padding: 10px;
+	border: 3mm ridge rgba(10, 125, 255, .4);
+}
