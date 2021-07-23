@@ -91,11 +91,9 @@ app.post('/register', function(req, res) {
     console.log(err, db_res);
     db.end();
   });
-      res.render('pages/login',{
-        my_title: "Login Page"
-      });
-
-  );
+  res.render('pages/login',{
+      my_title: "Login Page"
+  });
 });
 
 // Login page\\
