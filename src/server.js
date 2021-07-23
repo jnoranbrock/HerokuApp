@@ -14,6 +14,11 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //Create Database Connection
 var pgp = require('pg-promise')();
 
+private static Connection getConnection() throws URISyntaxException, SQLException {
+    String dbUrl = System.getenv("JDBC_DATABASE_URL");
+    return DriverManager.getConnection(dbUrl);
+}
+
 /**********************
   Database Connection information
   host: This defines the ip address of the server hosting our database.
@@ -39,7 +44,7 @@ const dev_dbConfig = {
  * to connect to Heroku Postgres.
  */
 const isProduction = process.env.NODE_ENV === 'production';
-const dbConfig = process.env.DATABASE_URL || "postgres://localhost:f2025113d40a658b4d4ed80e09dfd590efe2f87c8cfaabd9deed309895252a1d@ec2-18-213-219-169.compute-1.amazonaws.com:5432/d2mtq980nuuhgu?sslmode=require";
+const dbConfig = dbUrl;
 
 // Heroku Postgres patch for v10
 // fixes: https://github.com/vitaly-t/pg-promise/issues/711
@@ -57,9 +62,9 @@ app.use(express.static(__dirname + '/'));//This line is necessary for us to use 
 
 // home page
 app.get('/', function(req, res) {
-	res.render('pages/home',{
-		local_css:"signin.css",
-		my_title:"Home Page"
+	res.render('pages/Main_Menu',{
+		local_css:"my_style.css",
+		my_title:"Main Menu"
 	});
 });
 
@@ -72,16 +77,19 @@ app.get('/register', function(req, res) {
 
 app.post('/register', function(req, res) {
   uploadDataToDB();
-
-  db.task('', task => {
-      return
-  })
 });
 
 // Login page\\
 app.get('/login', function(req, res) {
 	res.render('pages/login',{
 		my_title:"Login Page"
+	});
+});
+
+app.get('/logout', function(req, res) {
+	res.render('pages/Main_Menu',{
+		local_css:"my_style.css",
+		my_title:"Main Menu"
 	});
 });
 

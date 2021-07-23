@@ -34,30 +34,20 @@ function insertName(){
 }
 
 function checkSignInStatus(){
-	var pw = document.getElementById("inputPassword").value;
-	var em = document.getElementById("inputEmail").value;
+}
 
-	var query = `SELECT email_address, password FROM user_info_db WHERE email_address=${em} AND password=${pw};`
-	var db_e = new Array(); var db_p = new Array();
-	db.any(query).then(info => {
-		db_e = info[0], db_p = info[1]
-	}).catch(err => {
-		console.log(`Error: ${err}`);
-	});
+function setSignIn(email, name) {
+}
 
-	if (db_e.length < 1) {
-		
-	} else {
-
-	}
+function menuSignIn(name) {
 
 }
 
 function uploadDataToDB(){
-	var full_name = document.getElementById("input_full_name").value;
+	var full_name = document.getElementById("fullName").value;
 	var user_email = document.getElementById("inputEmail").value;
-	var user_pass = document.getElementById("Password").value;
-	var confirm_pass = document.getElementById("ConfirmPassword").value;
+	var user_pass = document.getElementById("passwordFirst").value;
+	var confirm_pass = document.getElementById("passwordConfirm").value;
 	if(user_pass != confirm_pass){
 		alert("Passwords do not match.");
 		document.getElementById("passNoMatch").innerHTML = "Passwords do not match.";
@@ -70,7 +60,7 @@ function uploadDataToDB(){
 //	window.location.href = "../../views/login.html"; // This supposedly makes page change but can't get to work
 }
 
-function validateSignIn(){
+function checkDB4Acc(){
 	var valid_email = false;
 	var valid_password = false;
 
@@ -127,6 +117,9 @@ function showPassword(id) {
 function validExpr(expr, str){
 		if(expr.test(str)) {return true;} else {false;}
 }
+function v_email(id) { return validExpr(/^[0-z,\.]+@[A-z]+\.[A-z]{1,3}$/g, document.getElementById(id).value); }
+function v_pass(id) { return validExpr(/^(?=.+\d)(?=.*[A-Z]+)(?=.*[:-@!-/[-`{-~]+).{8,}$/g, document.getElementById(id).value);}
+
 function validEmail()  {
 	var em = document.getElementById("emailAddress"); var v_em =  document.getElementById("Valid_em");
 

@@ -8,18 +8,32 @@
 	<div class="collapse navbar-collapse" id="navbarText">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
-				<a class="nav-link" href="/About_Us">About Us </a>
+				<a class="nav-link" href="/Main_Menu">Main Menu</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/Main_Menu">Main Menu</a>
+				<a class="nav-link" href="/register">Register</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/report_card'">Score Card</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/About_Us">About Us</a>
 			</li>
 		</ul>
 
 		<!-- Login button -->
-		<form action="/">
+		<form action="/login" method="get" id="gin_mbtn">
+			<div class="form-inline my-2 my-lg-0">
+				<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Login</button>
+			</div>
+		</form>
+		<form action="/logout" method="get" id="out_mbtn" visibility="hidden;">
 			<div class="form-inline my-2 my-lg-0">
 				<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
 			</div>
 		</form>
+		<div class="inline my-2 my-lg-0" id="menumsg">
+			Welcome! <span id = "welcmsg" visibility="hidden;"></span>
+		</div>
 	</div>
 </nav>
