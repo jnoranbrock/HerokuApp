@@ -72,25 +72,15 @@ app.get('/register', function(req, res) {
 });
 
 app.post('/register', function(req, res) {
-  db.task('post-reg-data', task => {
-		return task.any(uploadDataToDB());
-	})
-	.then(data => {
-		res.render('pages/Main_Menu',{
-			my_title:"Main Menu",
-			names: data[1],
-		})
-	})
-	.catch(err => {
-		console.log('Uh Oh I made an oopsie');
-		req.flash('error', err);
-		res.render('pages/names',{
-			my_title: "Names",
-			players: '',
-			playerinfo: '',
-			games: ''
-		})
-	});
+  db.query(uploadDataToDB(),
+    (err, db_res) => {
+      console.log(err, db_res);
+      db.end();
+      res.render('pages/login',{
+        my_title: "Login Page"
+      })
+    }
+  );
 });
 
 // Login page\\

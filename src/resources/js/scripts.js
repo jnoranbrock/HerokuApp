@@ -39,7 +39,7 @@ function uploadDataToDB(){
 	var user_pass = document.getElementById("passwordFirst").value;
 
 	var query = `INSERT INTO user_info_db(full_name, email_address, password)`;
-	query += `VALUES(${full_name}, ${user_email}, ${user_pass});`;  // add the user's info to the database.
+	query += `VALUES(${full_name}, ${user_email}, ${user_pass})`;  // add the user's info to the database.
 	return query;
 	//	window.location.href = "../../views/login.html"; // This supposedly makes page change but can't get to work
 }
