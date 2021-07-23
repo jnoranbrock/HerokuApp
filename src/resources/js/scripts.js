@@ -89,7 +89,7 @@ function checkDB4Acc(){
 		if(all_passwords[i] === user_pass){  // match the passwords
 			valid_password = true;
 		}
-		if(valid_email && valid_password && ){
+		if(valid_email && valid_password){
 			user_name = all_names[i]
 			break;  // User is authenticated.
 		}
