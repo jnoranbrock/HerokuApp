@@ -72,7 +72,25 @@ app.get('/register', function(req, res) {
 });
 
 app.post('/register', function(req, res) {
-  uploadDataToDB();
+  db.task('post-reg-data', task => {
+		return task.any(uploadDataToDB());
+	})
+	.then(data => {
+		res.render('pages/Main_Menu',{
+			my_title:"Main Menu",
+			names: data[1],
+		})
+	})
+	.catch(err => {
+		console.log('Uh Oh I made an oopsie');
+		req.flash('error', err);
+		res.render('pages/names',{
+			my_title: "Names",
+			players: '',
+			playerinfo: '',
+			games: ''
+		})
+	});
 });
 
 // Login page\\

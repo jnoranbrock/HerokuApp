@@ -33,32 +33,19 @@ function insertName(){
 	}
 }
 
-function checkSignInStatus(){
-}
-
-function setSignIn(email, name) {
-}
-
-function menuSignIn(name) {
-
-}
-
 function uploadDataToDB(){
 	var full_name = document.getElementById("fullName").value;
 	var user_email = document.getElementById("inputEmail").value;
 	var user_pass = document.getElementById("passwordFirst").value;
-	var confirm_pass = document.getElementById("passwordConfirm").value;
-	if(user_pass != confirm_pass){
-		alert("Passwords do not match.");
-		document.getElementById("passNoMatch").innerHTML = "Passwords do not match.";
 
-	}
-	var query = `INSERT INTO user_problems(problem_type, numeral_a, operator, numeral_b, answer, correct, attempted)`;
-    query += `VALUES('Addition', ${num1}, '+', ${num2}, ${ans}, ${correct}, ${attempted});`;
 	var query = `INSERT INTO user_info_db(full_name, email_address, password)`;
-	query += `VALUES(${full_name}, ${user_email}, ${user_pass}) ON CONFLICT DO NOTHING`;  // add the user's info to the database.
-//	window.location.href = "../../views/login.html"; // This supposedly makes page change but can't get to work
+	query += `VALUES(${full_name}, ${user_email}, ${user_pass});`;  // add the user's info to the database.
+	return query;
+	//	window.location.href = "../../views/login.html"; // This supposedly makes page change but can't get to work
 }
+/*
+var query = `INSERT INTO user_problems(problem_type, numeral_a, operator, numeral_b, answer, correct, attempted)`;
+	query += `VALUES('Addition', ${num1}, '+', ${num2}, ${ans}, ${correct}, ${attempted});`;*/
 
 function checkDB4Acc(){
 	var valid_email = false;
