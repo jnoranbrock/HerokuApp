@@ -87,7 +87,10 @@ function uploadDataToDB(req){
 }
 
 app.post('/register', function(req, res) {
-  db.query(uploadDataToDB(req), (err, db_res) => { console.log(err, db_res); }
+  db.query(uploadDataToDB(req), (err, db_res) => {
+    console.log(err, db_res);
+    db.end();
+  });
       res.render('pages/login',{
         my_title: "Login Page"
       });
