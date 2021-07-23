@@ -1,3 +1,5 @@
+import { uploadDataToDB } from './resources/js/script.js';
+import { checkDB4Acc } from './resources/js/script.js';
 /***********************
   Load Components!
 
