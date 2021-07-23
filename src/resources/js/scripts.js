@@ -66,15 +66,18 @@ function checkDB4Acc(){
 
 	var user_email = document.getElementById("inputEmail").value;
 	var user_pass = document.getElementById("inputPassword").value;
+	var user_name = "";
 
 	var all_emails = new Array();  // make an array of all the emails in the database
 	var all_passwords = new Array();  // make an array of all the passwords in the database
+	var all_names = new Array(); //all the names in db
 	var num_users = all_emails.length;
 
-	var query = `SELECT email_address, password FROM user_info_db WHERE email_address=${user_email} AND password=${user_pass};`;  // query to get the row where the user's email and password match.
+	var query = `SELECT email_address, password, full_name FROM user_info_db WHERE email_address=${user_email} AND password=${user_pass};`;  // query to get the row where the user's email and password match.
 	db.any(query).then(info => {
 		all_emails = info[0],
-		all_passwords = info[1]
+		all_passwords = info[1],
+		all_names = info[2]
 	}).catch(err => {
 		console.log(`Error: ${err}`);
 	});
@@ -86,13 +89,18 @@ function checkDB4Acc(){
 		if(all_passwords[i] === user_pass){  // match the passwords
 			valid_password = true;
 		}
-		if(valid_email && valid_password){
+		if(valid_email && valid_password && ){
+			user_name = all_names[i]
 			break;  // User is authenticated.
 		}
 	}
 
 	if(valid_email && valid_password){
 		console.log("User is authenticated");
+		var nameplate= document.getElementById("welcmsg")
+		nameplate.innerHTML += user_name;
+		nameplate.style.visibility = "visible;"
+
 	}
 	else if(valid_email && !valid_password){
 		console.log("Incorrect password");
