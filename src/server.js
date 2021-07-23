@@ -1,4 +1,4 @@
-import { uploadDataToDB } from './resources/js/script.js';
+
 /***********************
   Load Components!
 
@@ -71,6 +71,17 @@ app.get('/register', function(req, res) {
 		my_title:"Registration Page"
 	});
 });
+
+function uploadDataToDB(){
+	var full_name = document.getElementById("fullName").value;
+	var user_email = document.getElementById("inputEmail").value;
+	var user_pass = document.getElementById("passwordFirst").value;
+
+	var query = `INSERT INTO user_info_db(full_name, email_address, password)`;
+	query += `VALUES(${full_name}, ${user_email}, ${user_pass})`;  // add the user's info to the database.
+	return query;
+	//	window.location.href = "../../views/login.html"; // This supposedly makes page change but can't get to work
+}
 
 app.post('/register', function(req, res) {
   db.query(uploadDataToDB(),
