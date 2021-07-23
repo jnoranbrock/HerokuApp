@@ -51,7 +51,7 @@ function uploadDataToDB(){
 	if(user_pass != confirm_pass){
 		alert("Passwords do not match.");
 		document.getElementById("passNoMatch").innerHTML = "Passwords do not match.";
-		// break;
+
 	}
 	var query = `INSERT INTO user_problems(problem_type, numeral_a, operator, numeral_b, answer, correct, attempted)`;
     query += `VALUES('Addition', ${num1}, '+', ${num2}, ${ans}, ${correct}, ${attempted});`;
@@ -103,7 +103,7 @@ function checkDB4Acc(){
 	if(valid_email && valid_password){
 		console.log("User is authenticated");
 		var nameplate= document.getElementById("welcmsg")
-		nameplate.innerHTML += user_name;
+		nameplate.innerHTML = user_name;
 		nameplate.style.visibility = "visible;"
 
 	}
