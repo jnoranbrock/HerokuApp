@@ -12,7 +12,7 @@ app.use(bodyParser.json());              // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //Create Database Connection
-var pgp = require('pg-promise')();
+var pgp = require('pg-promise');
 
 
 /**********************
