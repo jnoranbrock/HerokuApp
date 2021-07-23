@@ -63,6 +63,9 @@ function uploadDataToDB(){
 function checkDB4Acc(){
 	var valid_email = false;
 	var valid_password = false;
+	var valid_bingocatch = false;
+
+	var keypin = 0;
 
 	var user_email = document.getElementById("inputEmail").value;
 	var user_pass = document.getElementById("inputPassword").value;
@@ -85,11 +88,13 @@ function checkDB4Acc(){
 	for(let i = 0; i < num_users; i++){
 		if(all_emails[i] === user_email){  // match the emails
 			valid_email = true;
+			keypin = i;
 		}
 		if(all_passwords[i] === user_pass){  // match the passwords
 			valid_password = true;
+			if (keypin === i) {valid_bingocatch = true;}
 		}
-		if(valid_email && valid_password){
+		if(valid_email && valid_password && valid_bingocatch){
 			user_name = all_names[i]
 			break;  // User is authenticated.
 		}
