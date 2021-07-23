@@ -40,7 +40,7 @@ const dev_dbConfig = {
  * to connect to Heroku Postgres.
  */
 const isProduction = process.env.NODE_ENV === 'production';
-const dbConfig = process.env.DATABASE_URL || "postgres://lqpqcqxdnuygac:f2025113d40a658b4d4ed80e09dfd590efe2f87c8cfaabd9deed309895252a1d@ec2-18-213-219-169.compute-1.amazonaws.com:5432/d2mtq980nuuhgu";
+const dbConfig = process.env.DATABASE_URL;
 
 // Heroku Postgres patch for v10
 // fixes: https://github.com/vitaly-t/pg-promise/issues/711
