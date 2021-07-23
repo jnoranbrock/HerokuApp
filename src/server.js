@@ -71,10 +71,10 @@ app.get('/register', function(req, res) {
 	});
 });
 
-function uploadDataToDB(){
-	var full_name = document.getElementById("fullName").value;
-	var user_email = document.getElementById("inputEmail").value;
-	var user_pass = document.getElementById("passwordFirst").value;
+function uploadDataToDB(req){
+	var full_name = req.getElementById("fullName").value;
+	var user_email = req.getElementById("inputEmail").value;
+	var user_pass = req.getElementById("passwordFirst").value;
 
 	var query = `INSERT INTO user_info_db(full_name, email_address, password)`;
 	query += `VALUES(${full_name}, ${user_email}, ${user_pass})`;  // add the user's info to the database.
@@ -83,7 +83,7 @@ function uploadDataToDB(){
 }
 
 app.post('/register', function(req, res) {
-  db.query(uploadDataToDB(),
+  db.query(uploadDataToDB(req),
     (err, db_res) => {
       console.log(err, db_res);
       db.end();
