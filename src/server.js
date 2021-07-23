@@ -14,10 +14,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //Create Database Connection
 var pgp = require('pg-promise')();
 
-const Connection getConnection() throws URISyntaxException, SQLException {
-    String dbUrl = System.getenv("JDBC_DATABASE_URL");
-    return DriverManager.getConnection(dbUrl);
-}
 
 /**********************
   Database Connection information
@@ -44,7 +40,7 @@ const dev_dbConfig = {
  * to connect to Heroku Postgres.
  */
 const isProduction = process.env.NODE_ENV === 'production';
-const dbConfig = dbUrl;
+const dbConfig = process.env.DATABASE_URL;
 
 // Heroku Postgres patch for v10
 // fixes: https://github.com/vitaly-t/pg-promise/issues/711
