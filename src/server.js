@@ -72,25 +72,26 @@ app.get('/register', function(req, res) {
 });
 
 function uploadDataToDB(req){
-	var full_name = req.getElementById("fullName").value;
-	var user_email = req.getElementById("inputEmail").value;
-	var user_pass = req.getElementById("passwordFirst").value;
+	var full_name = req.body.fullName.value;
+	var user_email = req.body.emailAddress.value;
+	var user_pass = req.body.passwordFirst.value;
 
-	var query = `INSERT INTO user_info_db(full_name, email_address, password)`;
-	query += `VALUES(${full_name}, ${user_email}, ${user_pass})`;  // add the user's info to the database.
+	var query = `INSERT INTO user_info_db(
+  str, str, str
+)  VALUES(
+  ${full_name},
+  ${user_email},
+  ${user_pass})`;  // add the user's info to the database.
 	return query;
 	//	window.location.href = "../../views/login.html"; // This supposedly makes page change but can't get to work
 }
 
 app.post('/register', function(req, res) {
-  db.query(uploadDataToDB(req),
-    (err, db_res) => {
-      console.log(err, db_res);
-      db.end();
+  db.query(uploadDataToDB(req), (err, db_res) => { console.log(err, db_res); }
       res.render('pages/login',{
         my_title: "Login Page"
-      })
-    }
+      });
+
   );
 });
 
