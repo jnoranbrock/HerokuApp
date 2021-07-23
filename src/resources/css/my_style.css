@@ -21,6 +21,7 @@
 }
 #menumsg {
 	color: white;
-	padding: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
 	border: 3mm ridge rgba(10, 125, 255, .4);
 }
