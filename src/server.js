@@ -8,8 +8,8 @@
 var express = require('express'); //Ensure our express framework has been added
 var app = express();
 var bodyParser = require('body-parser'); //Ensure our body-parser tool has been added
-app.use(bodyParser.json());              // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.use(bodyParser.json());              // support json encoded bodies
 
 //Create Database Connection
 var pgp = require('pg-promise')();
@@ -82,10 +82,10 @@ function uploadDataToDB(req) {
 };
 
 app.post('/register', function(req, res) {
-  var querystr = function (req) {
-  	var full_name = req.body.fullName.value;
-  	var user_email = req.body.emailAddress.value;
-  	var user_pass = req.body.passwordFirst.value;
+  var querystr = function () {
+  	var full_name = req.body.fullName;
+  	var user_email = req.body.emailAddress;
+  	var user_pass = req.body.passwordFirst;
 
   	var query = `INSERT INTO user_info_db(full_name, email_address,password)VALUES(${full_name},${user_email},${user_pass})`;  // add the user's info to the database.
   	return query;
