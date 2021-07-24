@@ -82,15 +82,13 @@ function uploadDataToDB(req) {
 };
 
 app.post('/register', function(req, res) {
-  var querystr = function () {
   	var full_name = req.body.fullName;
   	var user_email = req.body.emailAddress;
   	var user_pass = req.body.passwordFirst;
 
   	var query = `INSERT INTO user_info_db(full_name, email_address,password)VALUES(${full_name},${user_email},${user_pass})`;  // add the user's info to the database.
-  	return query;
-  };
-  db.query(querystr, (err, db_res) => {
+
+  	db.query(query, (err, db_res) => {
     if (err !== undefined) { console.log("Postgres INS error:", err); console.log("\nkeys for Postgres error:", Object.keys(err)); }
     if (db_res !== undefined) { console.log("Postgres response:", res); console.log("\nkeys for Postgres res:", Object.keys(res)); }
     if (db_res.rowCount > 0) { console.log("User inserted"); }
